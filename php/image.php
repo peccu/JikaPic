@@ -13,7 +13,7 @@ if($thum != ''){
 /* こことcurl.phpを編集すること */
 
 /* urlから画像投稿サイトを判断する */
-if(preg_match("/(http:\/\/([^\/]*)\/.*)/",$u,$matches)){
+if(preg_match("/(https?:\/\/([^\/]*)\/.*)/",$u,$matches)){
   //var_dump($matches);
   $type = $matches[2];
 }
@@ -66,6 +66,11 @@ case "plixi.com":
 case "instagr.am":
   /* <meta property="og:image" content="http://distillery.s3.amazonaws.com/media/2011/01/01/9260c5cdf8384d90b91b771cb64123f4_7.jpg"/> */
   $pattern = '/<meta property="og:image" content="(http:\/\/.*)"/';
+  $no = 1;
+  break;
+case "foursquare.com":
+  /* <img src="https://img-s.foursquare.com/pix/5NNMQARILGZJBY5OVJEXMW1ZJCKRTF0RZNR22VT1KFLD33LZ.jpg" /> */
+  $pattern = '/<img src="(https:\/\/.*\.jpg)"/';
   $no = 1;
   break;
 default:
